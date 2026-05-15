@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>植德美牙醫診所 | 三峽植牙·全口重建·數位美學中心</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght=300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1a3a5f;      /* 深邃藍 - 專業信賴 */
+            --secondary-color: #4a7c59;    /* 溫潤綠 - 舒適醫療 */
+            --accent-color: #bfa15f;       /* 香檳金 - 高端美學 */
+            --light-bg: #fdfdfd;
+            --gray-bg: #f4f6f8;
+            --text-main: #2b303a;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+            letter-spacing: 0.05em;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.4rem;
+        }
+        .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(rgba(26, 58, 95, 0.65), rgba(43, 48, 58, 0.5)), 
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #f0f4f8;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            animation: fadeInUp 1.2s ease;
+        }
+
+        /* Section Global */
+        .section-padding { padding: 90px 0; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-header h2::after {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Featured Services */
+        .featured-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            height: 100%;
+            background: #fff;
+        }
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .featured-card:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
+        .badge-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Accordion */
+        .accordion-button:not(.collapsed) {
+            background-color: #f0f4f8;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(26, 58, 95, 0.1);
+        }
+        .accordion-item {
+            border: 1px solid #eef2f5;
+            margin-bottom: 10px;
+            border-radius: 8px !important;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* 新版醫師卡片樣式 */
+        .doctor-card {
+            border: none;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            overflow: hidden;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .doctor-img-box {
+            position: relative;
+            padding-top: 100%; /* 1:1 正方形 */
+            background-color: #f8f9fa;
+            overflow: hidden;
+        }
+        .doctor-img-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .doctor-card:hover .doctor-img-box img {
+            transform: scale(1.03);
+        }
+        .doctor-info-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 6px 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .doctor-card:hover .doctor-info-btn {
+            background-color: var(--accent-color);
+        }
+
+        /* Modal 彈出視窗精修樣式 */
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .modal-doc-img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        .modal-section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 8px;
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        /* Timetable Box */
+        .timetable-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .status-dot {
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+        }
+
+        /* Floating Sidebar Buttons */
+        .floating-action {
+            position: fixed;
+            bottom: 40px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .float-btn:hover { transform: scale(1.1); color: white;}
+        .btn-phone { background-color: var(--primary-color); }
+        .btn-line { background-color: #06c755; }
+
+        /* Footer */
+        footer {
+            background-color: #1e2229;
+            color: #a0aec0;
+            padding: 70px 0 30px;
+        }
+        footer h5 { color: #fff; font-weight: 700; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.3rem; }
+            .section-padding { padding: 60px 0; }
+        }
+
+        /* ===== 醫師照片：改圓形 + 縮小 ===== */
+.doctor-img-box {
+    position: relative;
+    padding-top: 0 !important;
+    width: 140px;
+    height: 140px;
+    margin: 25px auto 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.doctor-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* modal 裡的大圖也一起圓形化（可選但建議一致） */
+.modal-doc-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-tooth me-2" style="color: var(--accent-color);"></i>植德美牙醫診所
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#about">關於植德美</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#featured-services">核心高階療程</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#all-services">全科診療項目</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">專業醫師</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">預約與時間</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-outline-dark rounded-pill px-4 btn-sm fw-bold" href="tel:0226721777">
+                            <i class="fa-solid fa-phone me-1"></i>(02) 2672-1777
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 大器形象區 -->
+    <section class="hero-banner">
+        <div class="container text-center text-lg-start">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h1 class="hero-title mb-3">專業、用心<br>植得您信賴的完美微笑</h1>
+                    <p class="hero-subtitle mb-5">新北市三峽區口碑推薦，提供從個人化植牙、數位美學到家庭牙科的全方位溫柔照護。</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#featured-services" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-dark shadow">瀏覽診療服務</a>
+                        <a href="#booking" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold">查看門診時間</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於診所短簡介 -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1000" class="img-fluid rounded-4 shadow" alt="診所環境">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <span class="text-uppercase fw-bold text-muted small tracking-wider" style="color: var(--accent-color) !important;">ABOUT CLINIC</span>
+                    <h2 class="fw-bold mt-2 mb-4" style="color: var(--primary-color);">以「全人牙科」思維<br>守護您與全家人的牙齒健康</h2>
+                    <p class="text-muted leading-relaxed">位於新北市三峽區復興路，植德美牙醫診所落實「預防重於治療」理念。我們導入先進3D數位設備與顯微技術，從基礎蛀牙補綴、洗牙清潔，到精密的人工植牙與全口重建，皆以細緻的操作與完善的追蹤，讓每位三峽居民在舒適安心的環境中，重新找回自在用餐與自信微笑的信心。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心高階療程 -->
+    <section id="featured-services" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>核心高階療程</h2>
+                <p class="text-muted mt-2">導入頂尖數位設備，提供三峽地區精準、高端的牙科美學服務</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- 項目 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card featured-card">
+                        <div class="card-img-wrapper">
+                            <span class="badge-category">數位重建</span>
+                            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=600" alt="人工植牙">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">人工植牙</h5>
+                            <p class="text-muted small mb-0">提供專業的人工植牙服務，從3D影像評估到植體規劃皆精準細緻。針對單顆或多顆缺牙，醫師會依骨質與牙周條件設計個人化方案，重建穩定咬合與自然外觀。植牙過程安心、恢復順利，是三峽地區口碑良好的植牙推薦診所。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 項目 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card featured-card">
+                        <div class="card-img-wrapper">
+                            <span class="badge-category">全人醫療</span>
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600" alt="全口重建">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">全口重建</h5>
+                            <p class="text-muted small mb-0">全口重建整合植牙、齒雕與贋復設計，適合長期缺牙、牙齒磨損或咬合崩壞患者。植德美以「全人牙科」思維規劃療程，逐步恢復口腔功能與微笑曲線，重視美觀與耐用性並存。若您尋找三峽全口重建牙醫，我們提供評估與追蹤，幫助重建健康笑容。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 項目 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card featured-card">
+                        <div class="card-img-wrapper">
+                            <span class="badge-category">前牙美學</span>
+                            <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&q=80&w=600" alt="3D數位齒雕">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">3D數位齒雕</h5>
+                            <p class="text-muted small mb-0">透過3D數位掃描與即時設計製作齒雕，讓修復過程更精準。適用於蛀牙、舊補牙更換或裂痕修復。數位齒雕不僅密合度高，也能兼顧美觀與功能。許多三峽患者選擇植德美牙醫的3D數位齒雕，因其快速、舒適且自然，為現代牙科修復的主流技術。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 項目 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card featured-card">
+                        <div class="card-img-wrapper">
+                            <span class="badge-category">前牙美學</span>
+                            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600" alt="陶瓷貼片">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">陶瓷貼片（前牙美學）</h5>
+                            <p class="text-muted small mb-0">針對牙齒顏色不均、輕微缺角或縫隙，陶瓷貼片能快速改善外觀。植德美牙醫診所重視比例與自然光澤，貼片設計量身打造，讓笑容更亮眼。若您想找三峽地區口碑好的美學牙醫，陶瓷貼片是結合耐用與美感的完美選擇。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全科診療項目 -->
+    <section id="all-services" class="section-padding">
+        <div class="container" style="max-width: 900px;">
+            <div class="section-header">
+                <h2>全科診療與預防項目</h2>
+                <p class="text-muted mt-2">細緻微調、面面俱到，照顧您日常生活中的每一項牙齒需求</p>
+            </div>
+
+            <div class="accordion" id="servicesAccordion">
+                
+                <!-- 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                            <i class="fa-solid fa-wand-magic-sparkles text-primary me-2"></i> 冷光美白 / 居家美白
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            植德美牙醫提供冷光美白與居家美白兩種方案，依牙齒敏感度與需求客製化調整。專業冷光療程能有效淡化色素，居家配合可長期維持亮白效果。許多三峽區民眾選擇本診所進行牙齒美白，體驗專業、安全又自然的改善方式。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                            <i class="fa-solid fa-microscope text-primary me-2"></i> 顯微根管治療
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            當牙髓發炎或深度蛀牙導致疼痛時，顯微根管治療可保留原有牙齒。透過放大鏡技術清除感染、封閉管道，提升治療精準度與成功率。植德美牙醫以細心操作與完善追蹤，讓三峽居民在根管治療中能安心獲得穩定效果。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                            <i class="fa-solid fa-shield-halved text-primary me-2"></i> 牙周治療與維護
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            牙周病若未及時處理，將導致牙齦萎縮與牙齒鬆動。植德美牙醫診所落實「預防重於治療」理念，從洗牙、深層清潔到牙周再評估，協助患者建立良好清潔習慣。讓新北市三峽區居民透過持續牙周維護，穩定牙齒健康。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                            <i class="fa-solid fa-kit-medical text-primary me-2"></i> 蛀牙補綴（樹脂/嵌體）
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            針對初期蛀牙或舊補牙破損，醫師依齒質狀況選用樹脂補牙或3D齒雕修復。精準調整咬合、恢復咀嚼功能，同時維持自然外觀。植德美牙醫在三峽區以細緻補綴著稱，是追求美觀與功能兼顧患者的安心選擇。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                            <i class="fa-solid fa-tooth text-primary me-2"></i> 智齒與拔牙評估
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            智齒若生長不正或影響清潔，需專業評估拔除。植德美牙醫診所重視術前影像判讀與風險說明，術後並提供完整照護建議，減少腫脹與不適；讓新北市三峽區居民拔牙過程順利安心。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                            <i class="fa-solid fa-crown text-primary me-2"></i> 全瓷冠 / 牙橋修復
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            全瓷冠能保護根管後或受損牙齒，牙橋則適用於缺牙重建。植德美牙醫以高密合設計、自然色澤與牙周友善為原則，恢復口腔功能與笑容美觀。若您在三峽尋找專業牙冠修復診所，我們是值得信賴的選擇。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7">
+                            <i class="fa-solid fa-users-rectangle text-primary me-2"></i> 活動假牙與咬合調整
+                        </button>
+                    </h2>
+                    <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            針對多牙缺失或暫時性修復者，植德美牙醫提供量身訂製的活動假牙。強調配戴穩定、外觀自然與後續微調追蹤，協助重建咀嚼與發音功能。三峽地區許多患者在這裡重新找回自在用餐的信心。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8">
+                            <i class="fa-solid fa-child text-primary me-2"></i> 兒童牙科與預防保健
+                        </button>
+                    </h2>
+                    <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            植德美牙醫以溫和溝通引導孩子建立看牙信任感，提供塗氟、窩溝封填等預防性療程. 醫師會依牙齒發育階段給予指導，讓家長了解居家清潔重點。是三峽區家庭推薦的親子牙醫選擇。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9">
+                            <i class="fa-solid fa-teeth-open text-primary me-2"></i> 傳統矯正與咬合評估
+                        </button>
+                    </h2>
+                    <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion">
+                        <div class="accordion-body text-muted">
+                            針對暴牙、戽斗或擁擠齒列問題，植德美牙醫診所提供精準的咬合分析與矯正規劃。重視臉型比例、牙弓空間與清潔便利性，讓矯正後的笑容更自然。三峽許多青少年與成人患者皆信任本院的專業建議。
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業醫師陣容（全新卡片式設計 + 彈窗詳細資訊） -->
+    <section id="team" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>專業醫師陣容</h2>
+                <p class="text-muted mt-2">由各領域專科醫師協同會診，點擊醫師卡片查看詳細資歷學歷</p>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- 蕭煜倫 -->
+                <div class="col-6 col-lg-4">
+                    <div class="card doctor-card" data-bs-toggle="modal" data-bs-target="#docModal1">
+                        <div class="doctor-img-box">
+                            <img src="蕭煜倫.webp" alt="蕭煜倫 醫師">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold mb-1">蕭煜倫 醫師</h4>
+                            <p class="text-uppercase tracking-wider small fw-bold mb-3" style="color: var(--accent-color);">植牙專科醫師</p>
+                            <p class="text-muted small mb-4 line-clamp">全口植牙、全瓷美學假牙、雷射牙周病治療、活動假牙、牙齒美白、根管治療。</p>
+                            <button class="doctor-info-btn">詳細資歷 <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 吳長潔 -->
+                <div class="col-6 col-lg-4">
+                    <div class="card doctor-card" data-bs-toggle="modal" data-bs-target="#docModal2">
+                        <div class="doctor-img-box">
+                            <img src="吳長潔.webp" alt="吳長潔 醫師">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold mb-1">吳長潔 醫師</h4>
+                            <p class="text-uppercase tracking-wider small fw-bold mb-3" style="color: var(--accent-color);">家庭牙醫 / 贗復專長</p>
+                            <p class="text-muted small mb-4 line-clamp">家庭牙醫科、贗復牙科、全瓷嵌體、全瓷冠、人工植牙、牙齒美白。</p>
+                            <button class="doctor-info-btn">詳細資歷 <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 李經運 -->
+                <div class="col-6 col-lg-4">
+                    <div class="card doctor-card" data-bs-toggle="modal" data-bs-target="#docModal3">
+                        <div class="doctor-img-box">
+                            <img src="李經運.webp" alt="李經運 醫師">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold mb-1">李經運 醫師</h4>
+                            <p class="text-uppercase tracking-wider small fw-bold mb-3" style="color: var(--accent-color);">全人牙科 / 數位美學</p>
+                            <p class="text-muted small mb-4 line-clamp">全人牙科治療、3D數位齒雕、全口重建、陶瓷貼片、冷光/居家美白。</p>
+                            <button class="doctor-info-btn">詳細資歷 <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 葉昕 -->
+                <div class="col-6 col-lg-4">
+                    <div class="card doctor-card" data-bs-toggle="modal" data-bs-target="#docModal4">
+                        <div class="doctor-img-box">
+                            <img src="葉昕.webp" alt="葉昕 醫師">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold mb-1">葉昕 醫師</h4>
+                            <p class="text-uppercase tracking-wider small fw-bold mb-3" style="color: var(--accent-color);">一般牙科 / 外科手術</p>
+                            <p class="text-muted small mb-4 line-clamp">牙齒美白、固定假牙、3D齒雕、人工植牙、牙周手術、阻生齒手術。</p>
+                            <button class="doctor-info-btn">詳細資歷 <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 王少寓 -->
+                <div class="col-6 col-lg-4">
+                    <div class="card doctor-card" data-bs-toggle="modal" data-bs-target="#docModal5">
+                        <div class="doctor-img-box">
+                            <img src="王少寓.webp" alt="王少寓 醫師">
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold mb-1">王少寓 醫師</h4>
+                            <p class="text-uppercase tracking-wider small fw-bold mb-3" style="color: var(--accent-color);">家庭牙科 / 美學修復</p>
+                            <p class="text-muted small mb-4 line-clamp">家庭牙科、全瓷美學、全口重建、雷射牙周病治療、3D齒雕。</p>
+                            <button class="doctor-info-btn">詳細資歷 <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 醫師詳細資訊彈窗區 (Modals) -->
+    <!-- 1. 蕭煜倫 Modal -->
+    <div class="modal fade" id="docModal1" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+
+<div class="modal-header border-0 bg-light">
+<h5 class="modal-title fw-bold">醫師詳細資歷</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body p-4">
+<div class="row g-4">
+
+<div class="col-md-5 text-center">
+<img src="蕭煜倫.webp" class="modal-doc-img">
+</div>
+
+<div class="col-md-7">
+
+<h3>蕭煜倫 醫師</h3>
+
+<div class="modal-section-title">服務區域</div>
+<p>大久美學牙醫診所、沐芯牙醫聯合診所、極光牙醫診所、夏爾秀朗牙醫診所、吉安牙醫診所(安坑)、飛悅北大牙醫診所、植德美牙醫診所</p>
+
+<div class="modal-section-title">擅長治療</div>
+<p>全口植牙、全瓷美學假牙、雷射牙周病治療、活動假牙、牙齒美白、根管治療、口腔全人照護</p>
+
+<div class="modal-section-title">醫師資歷</div>
+<p>
+中華民國口腔雷射醫學會專科醫師<br>
+APLI雷射專科醫師<br>
+前台北醫學大學附設醫院贋復牙科專任醫師<br>
+中華民國植牙全國聯合醫學會專科醫師<br>
+台北醫學大學植牙認證醫師<br>
+台灣骨整合醫學會專科醫師<br>
+中華民國植體牙醫學會會員
+</p>
+
+<div class="modal-section-title">教育背景</div>
+<p>臺灣大學口腔醫學院碩士</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- 2. 吳長潔 Modal -->
+    <div class="modal fade" id="docModal2" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+
+<div class="modal-header border-0 bg-light">
+<h5 class="modal-title fw-bold">醫師詳細資歷</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body p-4">
+<div class="row g-4">
+
+<div class="col-md-5 text-center">
+<img src="吳長潔.webp" class="modal-doc-img">
+</div>
+
+<div class="col-md-7">
+
+<h3>吳長潔 醫師</h3>
+
+<div class="modal-section-title">服務區域</div>
+<p>飛悅北大牙醫診所、植德美牙醫診所</p>
+
+<div class="modal-section-title">擅長治療</div>
+<p>家庭牙醫科、贗復牙科、全瓷嵌體、全瓷冠、人工植牙、牙齒美白</p>
+
+<div class="modal-section-title">醫師資歷</div>
+<p>
+中華民國家庭牙醫學會專科醫師<br>
+中華民國植牙醫學會專科醫師<br>
+台灣植牙聯盟醫學會專科醫師<br>
+輔仁大學附設醫院主治醫師<br>
+衛福部家庭牙醫科專科醫師<br>
+衛福部雙和醫院贗復假牙科醫師
+</p>
+
+<div class="modal-section-title">教育背景</div>
+<p>臺北醫學大學牙醫系學士</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- 3. 李經運 Modal -->
+    <div class="modal fade" id="docModal3" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+
+<div class="modal-header border-0 bg-light">
+<h5 class="modal-title fw-bold">醫師詳細資歷</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body p-4">
+<div class="row g-4">
+
+<div class="col-md-5 text-center">
+<img src="李經運.webp" class="modal-doc-img">
+</div>
+
+<div class="col-md-7">
+
+<h3>李經運 醫師</h3>
+
+<div class="modal-section-title">服務區域</div>
+<p>麗星美學牙醫診所、植德美牙醫診所</p>
+
+<div class="modal-section-title">擅長治療</div>
+<p>全人牙科治療、3D數位齒雕、全口重建、陶瓷貼片、冷光暨居家美白、人工植牙</p>
+
+<div class="modal-section-title">醫師資歷</div>
+<p>
+臺北醫學大學牙醫學士<br>
+臺北市立萬芳醫院牙科部醫師<br>
+aPIELd牙周植牙美學課程認證醫師<br>
+中華植體美學醫學會會員<br>
+中華民國全人照護牙醫學會會員<br>
+部定家庭牙醫科專科醫師
+</p>
+
+<div class="modal-section-title">教育背景</div>
+<p>臺北醫學大學牙醫學士</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- 4. 葉昕 Modal -->
+    <div class="modal fade" id="docModal4" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+
+<div class="modal-header border-0 bg-light">
+<h5 class="modal-title fw-bold">醫師詳細資歷</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body p-4">
+<div class="row g-4">
+
+<div class="col-md-5 text-center">
+<img src="葉昕.webp" class="modal-doc-img">
+</div>
+
+<div class="col-md-7">
+
+<h3>葉昕 醫師</h3>
+
+<div class="modal-section-title">服務區域</div>
+<p>沐芯牙醫聯合診所、植德美牙醫診所</p>
+
+<div class="modal-section-title">擅長治療</div>
+<p>牙齒美白、固定假牙、3D齒雕、人工植牙、牙周手術、阻生齒手術</p>
+
+<div class="modal-section-title">醫師資歷</div>
+<p>
+台北長庚醫院牙醫師<br>
+中華民國植牙醫學會會員醫師<br>
+美國牙醫師國家考試通過<br>
+中國醫藥大學牙醫學士
+</p>
+
+<div class="modal-section-title">教育背景</div>
+<p>中國醫藥大學牙醫學士</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- 5. 王少寓 Modal -->
+    <div class="modal fade" id="docModal5" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal-content">
+
+<div class="modal-header border-0 bg-light">
+<h5 class="modal-title fw-bold">醫師詳細資歷</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body p-4">
+<div class="row g-4">
+
+<div class="col-md-5 text-center">
+<img src="王少寓.webp" class="modal-doc-img">
+</div>
+
+<div class="col-md-7">
+
+<h3>王少寓 醫師</h3>
+
+<div class="modal-section-title">服務區域</div>
+<p>飛悅北大牙醫診所、植德美牙醫診所</p>
+
+<div class="modal-section-title">擅長治療</div>
+<p>家庭牙科、全瓷美學、全口重建、一般牙科、雷射牙周病治療、人工植牙、牙齒美白、3D齒雕</p>
+
+<div class="modal-section-title">醫師資歷</div>
+<p>
+臺北醫學大學牙醫學士<br>
+臺北醫學大學附設醫院牙科部醫師<br>
+中華審美牙醫學會會員<br>
+台灣植牙醫學會會員<br>
+中華植體美學醫學會會員
+</p>
+
+<div class="modal-section-title">教育背景</div>
+<p>臺北醫學大學牙醫學士</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- 預約、時間表與地圖 -->
+    <section id="booking" class="section-padding">
+        <div class="container">
+            <div class="row g-5">
+                <!-- 診間時刻表 -->
+                <div class="col-lg-7">
+                    <h3 class="fw-bold mb-4" style="color: var(--primary-color);"><i class="fa-regular fa-calendar-days me-2"></i>門診看診時間</h3>
+                    <div class="timetable-container table-responsive">
+                        <table class="table table-hover text-center align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="py-3">看診時段</th>
+                                    <th>週一至週五</th>
+                                    <th>週六</th>
+                                    <th>週日</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 fw-bold">上午 <small class="text-muted d-block">09:30~12:30</small></td>
+                                    <td><i class="fa-solid fa-circle status-dot"></i></td>
+                                    <td><i class="fa-solid fa-circle status-dot"></i></td>
+                                    <td class="text-danger small fw-bold">休診</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 fw-bold">下午 <small class="text-muted d-block">14:00~17:30</small></td>
+                                    <td><i class="fa-solid fa-circle status-dot"></i></td>
+                                    <td><i class="fa-solid fa-circle status-dot"></i></td>
+                                    <td class="text-danger small fw-bold">休診</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 fw-bold">晚上 <small class="text-muted d-block">18:00~21:00</small></td>
+                                    <td><i class="fa-solid fa-circle status-dot"></i></td>
+                                    <td class="text-danger small fw-bold">休診</td>
+                                    <td class="text-danger small fw-bold">休診</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-3 small text-muted"><i class="fa-solid fa-circle-info me-1"></i>詳細時間及國定假日請以診所網路預約時間為準。</p>
+                    
+                    <div class="row mt-4 g-3 text-muted small">
+                        <div class="col-sm-6"><i class="fa-solid fa-location-dot me-2 text-dark"></i>新北市三峽區復興路46號</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-phone me-2 text-dark"></i>(02) 2672-1777</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-wallet me-2 text-dark"></i>付款方式：現金支付</div>
+                        <div class="col-sm-6"><i class="fa-solid fa-clock me-2 text-dark"></i>支援 24 小時線上預約系統</div>
+                    </div>
+                </div>
+
+                <!-- 聯絡預約諮詢表單 -->
+                <div class="col-lg-5">
+                    <div class="bg-light p-4 rounded-4 shadow-sm">
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">預約諮詢登記</h4>
+                        <p class="text-muted small mb-4">歡迎填寫下方資訊，我們將有專人與您聯繫安排看診。</p>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">您的姓名</label>
+                                <input type="text" class="form-control rounded-pill" placeholder="請輸入姓名" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">聯絡電話</label>
+                                <input type="tel" class="form-control rounded-pill" placeholder="請輸入手機號碼" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">欲諮詢/看診項目</label>
+                                <select class="form-select rounded-pill">
+                                    <option>人工植牙 / 全口重建</option>
+                                    <option>3D數位齒雕 / 陶瓷貼片</option>
+                                    <option>牙齒美白 (冷光/居家)</option>
+                                    <option>一般健保牙科 / 兒童牙科</option>
+                                    <option>齒列矯正評估</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100 rounded-pill py-2.5 fw-bold mt-2" style="background-color: var(--primary-color);">送出預約申請</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 地圖區域 -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="ratio ratio-21x9 bg-secondary-subtle rounded-4 overflow-hidden shadow-sm d-flex align-items-center justify-content-center text-muted">
+                        <div class="text-center">
+                            <i class="fa-solid fa-map-location-dot fa-2xl mb-2 text-secondary"></i>
+                            <p class="mb-0 small fw-bold">Google Map 互動地圖區域 (新北市三峽區復興路46號)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5 class="mb-3"><i class="fa-solid fa-tooth me-2"></i>植德美牙醫診所</h5>
+                    <p class="small text-white-50 max-w-sm">
+                        秉持全人醫療理念，提供三峽地區專業精準、溫柔尊榮的口腔照護體驗。
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h6 class="text-white mb-3">社群與連結</h6>
+                    <a href="#" class="text-white-50 me-3 text-decoration-none"><i class="fa-brands fa-facebook fa-lg"></i> Facebook</a>
+                    <a href="#" class="text-white-50 me-3 text-decoration-none"><i class="fa-brands fa-line fa-lg"></i> LINE 預約</a>
+                    <a href="#" class="text-white-50 text-decoration-none"><i class="fa-brands fa-instagram fa-lg"></i> Instagram</a>
+                </div>
+            </div>
+            <hr class="my-4 opacity-25">
+            <div class="row small opacity-50">
+                <div class="col-md-6 text-center text-md-start">
+                    &copy; 2026 植德美牙醫診所. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                    網頁文案來源：Dentco & 診所官方提供
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 右下角浮動按鈕 -->
+    <div class="floating-action">
+        <a href="https://line.me" target="_blank" class="float-btn btn-line" title="LINE 線上預約">
+            <i class="fa-brands fa-line fa-2xl"></i>
+        </a>
+        <a href="tel:0226721777" class="float-btn btn-phone" title="撥打電話">
+            <i class="fa-solid fa-phone fa-xl"></i>
+        </a>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
